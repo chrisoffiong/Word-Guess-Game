@@ -1,0 +1,10 @@
+.jumbotron{
+    background-image: url("../images/bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: 'Audiowide', cursive;
+   }
+body {
+    background-image: url(../images/1.jpg);
+}
