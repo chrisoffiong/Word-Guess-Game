@@ -19,28 +19,37 @@
         <source src="music.mp3" type="audio/ogg">
 
     </audio>
-    <div class="bg"></div>
+   
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-5">Hangman Revolution</h1>
             <p class="lead">This is a high stakes game of Hangman. Choose your answers wisely!</p>
         </div>
-    </div>
+    </div> 
+    <div class="bg"></div>
         <div class="container">
             <div class="row">
-                <div class="underscore"></div>
-                <div class="counter"></div>
+                <div class="col-4">
+                    <div class="underscore"></div>
+                </div>
+                <div class="col-4">
+                    <div class="counter"></div>
+                </div>
+                
                 <div class="words"></div>
                 <div class="letters"></div>
                 <div class="answers"></div>
                 <div class="guesses"></div>
-                <div class="hints"></div>
+                <div class="col-4">
+                    <div class="hints"></div>
+                </div>
+                
             </div>
         </div>
         <div class="container">
             <div class="row">
-                    <button type="button" class="btn btn-primary">Hint</button>
-                    <button type="button" class="btn btn-danger">Restart</button>
+                    <button type="button" class="btn btn-primary hint-button">Hint</button>
+                    <button type="button" class="btn btn-danger restart-button">Restart</button>
             </div>
         </div>
     <script src="assests/javascript/game.js"></script>

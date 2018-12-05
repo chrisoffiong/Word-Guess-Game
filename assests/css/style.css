@@ -2,7 +2,20 @@
     background-image: url("../images/bg.png");
     background-size: cover;
     background-repeat: no-repeat;
-    color: white;
+    color: rgb(179, 176, 176);
     font-family: 'Audiowide', cursive;
    }
-   
+
+.bg {
+    background-image: url("../images/1.jpg");
+    background-size: cover;
+
+}
+.hints {
+    font-family: 'Audiowide',cursive;
+    font-weight: bolder;
+}
+
+.underscore {
+    font-family: 'Audiowide',cursive;
+}
