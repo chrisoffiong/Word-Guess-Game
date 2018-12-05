@@ -15,7 +15,7 @@ var guesses = document.querySelector(".guesses");
 var hints = document.querySelector(".hints");
 var randomWord = Math.floor(Math.random() * words.length);
 var thisWord = words[randomWord];
-var guessesRemaining = 5;
+
 
 
 
@@ -27,6 +27,7 @@ console.log("current word:", thisWord);
 //Display game banner
 window.onload = function () {
   alert("Hangman Revolution!")
+  guessesRemaining = 5
 };
 
 function blank() {
@@ -44,34 +45,37 @@ blanks.innerHTML = blank();
 //checking the users input
 
 
-  
-
+var guessesRemaining = 5;
 document.addEventListener('keypress', function (event) {
-
   var keyword = String.fromCharCode(event.keyCode);
+if(thisWord.indexOf(keyword) < 0 || thisWord.indexOf(keyword.toUpperCase() < 0)) {
+ guessesRemaining--;
+}
+if (guessesRemaining < 1) {
+  alert("Game Over")
+}
   if (thisWord.indexOf(keyword) > -1 || thisWord.indexOf(keyword.toUpperCase() > -1)) {
     console.log("word index: ", thisWord.indexOf(keyword));
     for (var i = 0; i < thisWord.length; i++) {
       if (keyword.toUpperCase() == thisWord[i].toUpperCase()) {
         emptyArray[i] = thisWord[i];
         blanks.innerHTML = emptyArray.join(" ");
-        
-      }
+        if (emptyArray === thisWord) {
+      alert("You win!!!")
+    }}
     }
-   }
-  else {
-    guessRemaining--;
-  }
   
- 
- console.log(guessesRemaining);
+  }
+
+
+  console.log(guessesRemaining);
 
   $(".restart-button").on("click", function () {
     location.reload();
   })
   $(".hint-button").on("click", function () {
-      hints.innerHTML = "Hint: " + wordHints[randomWord];
-    }
+    hints.innerHTML = "Hint: " + wordHints[randomWord];
+  }
   );
 });
 
