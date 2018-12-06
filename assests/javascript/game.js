@@ -36,9 +36,6 @@ function blank() {
   return emptyArray.join(" ");
 };
 
-img.innerHTML =  
-
-
 //Generates blanks for the length of the word
 blanks.innerHTML = blank();
 
@@ -50,44 +47,41 @@ var lettersRemaining = thisWord.length;
 //checking the users input
 document.addEventListener('keypress', function (event) {
   var keyword = String.fromCharCode(event.keyCode);
-//conditional for if the key pressed is not in the corret array
+  //conditional for if the key pressed is not in the corret array
   if (thisWord.indexOf(keyword) < 0) {
     guessesRemaining--;
     wrongArray.push(keyword);
-    
-//shows the value of the string either true or fasle
+
+    //shows the value of the string either true or fasle
     console.log("word index: ", thisWord.indexOf(keyword));
   };
-//generating HTML to divs
+  //generating HTML to divs
   wrong.innerHTML = "Wrong Guesses: " + " " + wrongArray;
   guesses.innerHTML = "Number of Guesses Remaining:" + " " + guessesRemaining;
-//animates the hangman based on lives remaining
+  //animates the hangman based on lives remaining
   img.src = "assests/images/" + guessesRemaining + ".jpg";
-//if you run out of lives, display game over
+  //if you run out of lives, display game over
   if (guessesRemaining < 1) {
     alert("Game Over");
     location.reload();
   };
-//conditional for if the key is within the corret array
+  //conditional for if the key is within the corret array
   if (thisWord.indexOf(keyword) > -1) {
     for (var i = 0; i < thisWord.length; i++) {
       if (keyword == thisWord[i]) {
         emptyArray[i] = thisWord[i];
         blanks.innerHTML = emptyArray.join(" ");
         corretArray.push(keyword);
-//remove a remaining letters required to win on every correct input
+        //remove a remaining letters required to win on every correct input
         lettersRemaining--;
         remaining.innerHTML = "Number of letters remaining: " + " " + lettersRemaining;
-        
-
       }
     }
-//conditions for winning is completing a word
-//reloads pages upon victory
+    //conditions for winning is completing a word
+    //reloads pages upon victory
     if (lettersRemaining < 1) {
       alert("You win!!!")
       location.reload();
-
     }
   }
 });
