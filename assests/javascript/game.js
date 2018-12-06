@@ -1,6 +1,6 @@
-//inputting 
-const words = ['Tesla', 'Ford Focus', 'Miata', 'BugattiVeyron', 'ShibaInu', 'Husky', 'Chihuahua', 'GermanShepard', 'Persian', 'Sphynx', 'Chartreux', 'Siamese',
-  'JimiHendrix', 'ElvisPresley', 'Beyonce', 'Prince'];
+// Setting up variables for the game
+const words = ['tesla', 'fordfocus', 'miata', 'bugattiveyron', 'shibainu', 'husky', 'chihuahua', 'germanshepard', 'persian', 'sphynx', 'chartreux', 'siamese',
+  'jimihendrix', 'elvispresley', 'beyonce', 'prince'];
 var wordHints = ['New trending Techie Car', 'A box car special, made by Americas own', 'Top down, ready to go', 'Multi-million dollar beast', 'This dog is probably smarter than me or you',
   'Wolf dog', 'Stop barking', 'Police-issue Special', 'This cat exudes class', 'Reminds me of days in Egpyt', 'A fancy name that doesnt fit this cat', 'The evil cats in Aristocats', 'Flames are in my eyes', 'The king of rock and roll',
   'All the single ladies', 'The Artist Formerly Known as..'];
@@ -9,20 +9,16 @@ var wrongArray = [];
 var x;
 var blanks = document.querySelector(".underscore");
 var hint = document.querySelector(".hints");
-var letters = document.querySelector(".letters");
-var answers = document.querySelector(".answers");
 var guesses = document.querySelector(".guesses");
 var hints = document.querySelector(".hints");
+var remaining = document.querySelector(".remaining");
+var wrong = document.querySelector(".wrong");
 var randomWord = Math.floor(Math.random() * words.length);
 var thisWord = words[randomWord];
+var corretArray = [];
 
 
-
-
-//words[0] = {word: 'Tesla', hint: 'New trending Techie Car'}
-//If we want to do this the object way:
-//var thisWord = words[randomWord].word;
-// var thisHint = words[randomWord].hint;
+//Display the correct answer in the console to help debugging
 console.log("current word:", thisWord);
 //Display game banner
 window.onload = function () {
@@ -38,45 +34,65 @@ function blank() {
 
   return emptyArray.join(" ");
 };
-//Generates blanks for whatever word
+//Generates blanks for the length of the word
 
 blanks.innerHTML = blank();
 
-//checking the users input
-
-
+// a few more general variables
+var winCounter = 0;
 var guessesRemaining = 5;
+var lettersRemaining = thisWord.length;
+
+//checking the users input
 document.addEventListener('keypress', function (event) {
   var keyword = String.fromCharCode(event.keyCode);
-if(thisWord.indexOf(keyword) < 0 || thisWord.indexOf(keyword.toUpperCase() < 0)) {
- guessesRemaining--;
-}
-if (guessesRemaining < 1) {
-  alert("Game Over")
-}
-  if (thisWord.indexOf(keyword) > -1 || thisWord.indexOf(keyword.toUpperCase() > -1)) {
+//conditional for if the key pressed is not in the corret array
+  if (thisWord.indexOf(keyword) < 0) {
+    guessesRemaining--;
+    wrongArray.push(keyword);
+//shows the value of the string either true or fasle
     console.log("word index: ", thisWord.indexOf(keyword));
+  };
+//generating HTML to divs
+  wrong.innerHTML = "Wrong Guesses: " + " " + wrongArray;
+  guesses.innerHTML = "Number of Guesses Remaining:" + " " + guessesRemaining;
+//if you run out of lives, display game over
+  if (guessesRemaining < 1) {
+    alert("Game Over");
+    location.reload();
+  };
+//conditional for if the key is within the corret array
+  if (thisWord.indexOf(keyword) > -1) {
     for (var i = 0; i < thisWord.length; i++) {
-      if (keyword.toUpperCase() == thisWord[i].toUpperCase()) {
+      if (keyword == thisWord[i]) {
         emptyArray[i] = thisWord[i];
         blanks.innerHTML = emptyArray.join(" ");
-        if (emptyArray === thisWord) {
-      alert("You win!!!")
-    }}
+        corretArray.push(keyword);
+//remove a remaining letters required to win on every correy input
+        lettersRemaining--;
+        remaining.innerHTML = "Number of letters remaining: " + " " + lettersRemaining;
+
+      }
     }
-  
+//conditions for winning is completing a word
+//reloads pages upon victory
+    if (lettersRemaining < 1) {
+      alert("You win!!!")
+      location.reload();
+
+    }
   }
-
-
-  console.log(guessesRemaining);
-
-  $(".restart-button").on("click", function () {
-    location.reload();
-  })
-  $(".hint-button").on("click", function () {
-    hints.innerHTML = "Hint: " + wordHints[randomWord];
-  }
-  );
 });
+
+console.log(guessesRemaining);
+//Restart the page on button press
+$(".restart-button").on("click", function () {
+  location.reload();
+});
+//Generate hint based on Hint array above
+$(".hint-button").on("click", function () {
+  hints.innerHTML = "Hint: " + wordHints[randomWord];
+});
+
 
 

@@ -9,13 +9,41 @@
 .bg {
     background-image: url("../images/1.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
 
 }
-.hints {
+.underscore {
     font-family: 'Audiowide',cursive;
     font-weight: bolder;
 }
 
-.underscore {
-    font-family: 'Audiowide',cursive;
+.counter {
+    font-family: 'Audiowide', cursive;
+
+}
+
+.hints {
+    font-family: 'Audiowide', cursive;
+    font-weight: bold;
+    
+}
+
+.guesses {
+    font-family: 'Audiowide', cursive;
+    font-weight: bold;
+}
+
+.remaining {
+    font-family:'Audiowide', cursive;
+    font-weight: bold;
+}
+
+.wrong {
+    font-family:'Audiowide', cursive;
+    font-weight: bold;
+}
+
+.wins {
+    font-family:'Audiowide', cursive;
+    font-weight: bold;
 }
