@@ -43,10 +43,19 @@ blanks.innerHTML = blank();
 var winCounter = 0;
 var guessesRemaining = 5;
 var lettersRemaining = thisWord.length;
+var usedLetters = [];
 
 //checking the users input
 document.addEventListener('keypress', function (event) {
   var keyword = String.fromCharCode(event.keyCode);
+  //checks if the key was already used
+  if (usedLetters.includes(keyword)) {
+    alert("You have already guessed this key!")
+    return;
+  }
+  else {
+    usedLetters.push(keyword);
+  };
   //conditional for if the key pressed is not in the corret array
   if (thisWord.indexOf(keyword) < 0) {
     guessesRemaining--;
