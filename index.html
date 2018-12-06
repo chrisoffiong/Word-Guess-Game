@@ -26,31 +26,44 @@
     </div>
     <div class="bg"></div>
     <div class="container">
-        <div class="col-4">
-            <div class="underscore"></div>
-        </div>
-        <div class="col-4">
-            <div class="counter">If you need a hint. Press the button below (Can only get a hint after you actually
-                try and guess! Don't give up!)
+        <div class="row">
+            <div class="col-4">
+                <div class="underscore"></div>
+            </div>
+            <div class="col-4">
+                <div class="counter">If you need a hint. Press the button below (Can only get a hint after you actually
+                    try and guess! Don't give up!)
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="letters"></div>
             </div>
         </div>
-        <div class="letters"></div>
-      
-       
-        <div class="guesses"></div>
-        <div class="col-4">
-            <div class="hints"></div>
-        </div>
+        <div class="row"> 
+            <div class="col-4">
+                    <div class="hints"></div>
+                </div>
+                <div class="col-8">
+               <button type="button" class="btn btn-primary hint-button">Hint</button>
+                <button type="button" class="btn btn-danger restart-button">Restart</button>
+               </div>
+            </div>
         <div class="row">
- <div class="wrong"></div>
+            <div class="col-3">
+                <div class="wrong"></div>
+            </div>
+            <div class="col-5">
+                <img id="img" src="assests/images/default.jpg">
+            </div>
         </div>
         <div class="col-4">
-        <div class="remaining"></div>
+            <div class="remaining"></div>
         </div>
         <div class="container">
             <div class="row">
-                <button type="button" class="btn btn-primary hint-button">Hint</button>
-                <button type="button" class="btn btn-danger restart-button">Restart</button>
+                    <div class="col-8">
+                            <div class="guesses"></div>
+                        </div>
             </div>
         </div>
         <script src="assests/javascript/game.js"></script>

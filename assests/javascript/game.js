@@ -16,6 +16,7 @@ var wrong = document.querySelector(".wrong");
 var randomWord = Math.floor(Math.random() * words.length);
 var thisWord = words[randomWord];
 var corretArray = [];
+var img = document.getElementById("img")
 
 
 //Display the correct answer in the console to help debugging
@@ -34,8 +35,11 @@ function blank() {
 
   return emptyArray.join(" ");
 };
-//Generates blanks for the length of the word
 
+img.innerHTML =  
+
+
+//Generates blanks for the length of the word
 blanks.innerHTML = blank();
 
 // a few more general variables
@@ -50,12 +54,15 @@ document.addEventListener('keypress', function (event) {
   if (thisWord.indexOf(keyword) < 0) {
     guessesRemaining--;
     wrongArray.push(keyword);
+    
 //shows the value of the string either true or fasle
     console.log("word index: ", thisWord.indexOf(keyword));
   };
 //generating HTML to divs
   wrong.innerHTML = "Wrong Guesses: " + " " + wrongArray;
   guesses.innerHTML = "Number of Guesses Remaining:" + " " + guessesRemaining;
+//animates the hangman based on lives remaining
+  img.src = "assests/images/" + guessesRemaining + ".jpg";
 //if you run out of lives, display game over
   if (guessesRemaining < 1) {
     alert("Game Over");
@@ -68,9 +75,10 @@ document.addEventListener('keypress', function (event) {
         emptyArray[i] = thisWord[i];
         blanks.innerHTML = emptyArray.join(" ");
         corretArray.push(keyword);
-//remove a remaining letters required to win on every correy input
+//remove a remaining letters required to win on every correct input
         lettersRemaining--;
         remaining.innerHTML = "Number of letters remaining: " + " " + lettersRemaining;
+        
 
       }
     }
